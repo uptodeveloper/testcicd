@@ -13,7 +13,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - name: Github Repository 불러오기
         uese: actions/Checkout@v5
 
