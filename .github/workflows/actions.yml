@@ -4,17 +4,21 @@
 name: Github Actions 연습하기
 # 언제 이 작업을 실행할지 정의
 # push: github에 push할 때마다 실행
-on: push
+on:
+  push:
+    branches:
+      - feature/*
 
+#그렇다고합니다
 jobs:
   test:
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - name: Github Repository 불러오기
-        uese: actions/Checkout@v5
+        uses: actions/Checkout@v5
 
       - name: Node.js 설치하기
-        uese: actions/setup-node@v6
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
       - name: 의존성(라이브러리) package-lock.json 있으면 설치됨
