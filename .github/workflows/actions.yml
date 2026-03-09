@@ -1,27 +1,24 @@
 # .github/workflows/actions.yml
 
-# 이름 짓기
-name: Github Actions 연습하기
-# 언제 이 작업을 실행할지 정의
-# push: github에 push할 때마다 실행
+name: Github Actions로 테스트 자동화하기
 on:
-  push:
+  pull_request:
     branches:
-      - feature/*
+      - main
 
-#그렇다고합니다
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Github Repository 불러오기
-        uses: actions/Checkout@v5
+        uses: actions/checkout@v5
 
       - name: Node.js 설치하기
         uses: actions/setup-node@v6
         with:
           node-version: "24"
-      - name: 의존성(라이브러리) package-lock.json 있으면 설치됨
+
+      - name: 의존성(라이브러리) 설치
         run: npm ci
 
       - name: 테스트 실행하기
